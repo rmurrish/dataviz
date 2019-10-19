@@ -1,41 +1,40 @@
-
-let num = 2000;
-let range = 6;
-
-let ax = [];
-let ay = [];
-
+let ring;
 
 function setup() {
   createCanvas(710, 400);
-  for ( let i = 0; i < num; i++ ) {
-    ax[i] = width / 2;
-    ay[i] = height / 2;
-  }
-  frameRate(30);
+  ring = new Donut();
 }
 
 function draw() {
-  background(51);
+  background(50, 240, 100);
+  bug.display();
+}
 
-  // Shift all elements 1 place to the left
-  for ( let i = 1; i < num; i++ ) {
-    ax[i - 1] = ax[i];
-    ay[i - 1] = ay[i];
+class Donut {
+  constructor() {
+    this.x = random(width);
+    this.y = random(height);
+    this.diameter = random(10, 30);
+    this.speed = 1;
   }
 
-  // Put a new value at the end of the array
-  ax[num - 1] += random(-range, range);
-  ay[num - 1] += random(-range, range);
 
-  // Constrain all points to the screen
-  ax[num - 1] = constrain(ax[num - 1], 0, width);
-  ay[num - 1] = constrain(ay[num - 1], 0, height);
-
-  // Draw a line connecting the points
-  for ( let j = 1; j < num; j++ ) {
-    let val = j / num * 204.0 + 51;
-    stroke(val);
-    line(ax[j - 1], ay[j - 1], ax[j], ay[j]);
+  display() {  
+    let numPoints = int(map(mouseX, 0, width, 6, 60));
+    let angle = 0;
+    let angleStep = 180.0 / numPoints;
+    
+    beginShape(TRIANGLE_STRIP);
+    for (let i = 0; i <= numPoints; i++) {
+      let px = x + cos(radians(angle)) * outsideRadius;
+      let py = y + sin(radians(angle)) * outsideRadius;
+      angle += angleStep;
+      vertex(px, py);
+      px = x + cos(radians(angle)) * insideRadius;
+      py = y + sin(radians(angle)) * insideRadius;
+      vertex(px, py);
+      angle += angleStep;
+    }
+    endShape();
   }
 }
