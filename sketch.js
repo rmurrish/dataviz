@@ -16,13 +16,11 @@ class Donut {
     this.y = random(height);
     this.insideRadius = random(height);
     this.outsideRadius = random(width);
-    this.diameter = random(10, 30);
-    this.speed = 1;
   }
 
 
   display() {  
-    let numPoints = int(map(mouseX, 0, width, 6, 60));
+    let numPoints = 50;
     let angle = 0;
     let angleStep = 180.0 / numPoints;
     
