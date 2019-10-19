@@ -7,7 +7,7 @@ function setup() {
 
 function draw() {
   background(50, 240, 100);
-  bug.display();
+  ring.display();
 }
 
 class Donut {
