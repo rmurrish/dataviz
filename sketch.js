@@ -14,6 +14,8 @@ class Donut {
   constructor() {
     this.x = random(width);
     this.y = random(height);
+    this.insideRadius = random(height);
+    this.outsideRadius = random(width);
     this.diameter = random(10, 30);
     this.speed = 1;
   }
@@ -26,12 +28,12 @@ class Donut {
     
     beginShape(TRIANGLE_STRIP);
     for (let i = 0; i <= numPoints; i++) {
-      let px = x + cos(radians(angle)) * outsideRadius;
-      let py = y + sin(radians(angle)) * outsideRadius;
+      let px = this.x + cos(radians(angle)) * this.outsideRadius;
+      let py = this.y + sin(radians(angle)) * this.outsideRadius;
       angle += angleStep;
       vertex(px, py);
-      px = x + cos(radians(angle)) * insideRadius;
-      py = y + sin(radians(angle)) * insideRadius;
+      px = this.x + cos(radians(angle)) * this.insideRadius;
+      py = this.y + sin(radians(angle)) * this.insideRadius;
       vertex(px, py);
       angle += angleStep;
     }
