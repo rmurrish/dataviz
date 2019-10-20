@@ -22,7 +22,7 @@ class Donut {
   display() {  
     let numPoints = 50;
     let angle = 0;
-    let angleStep = 180.0 / numPoints;
+    let angleStep = 360.0 / numPoints;
     
     beginShape(QUAD_STRIP);
     for (let i = 0; i <= numPoints; i++) {
@@ -33,7 +33,7 @@ class Donut {
       px = this.x + cos(radians(angle)) * this.insideRadius;
       py = this.y + sin(radians(angle)) * this.insideRadius;
       vertex(px, py);
-      angle += angleStep;
+      //angle += angleStep;
     }
     endShape();
   }
