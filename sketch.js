@@ -24,7 +24,7 @@ class Donut {
     let angle = 0;
     let angleStep = 180.0 / numPoints;
     
-    beginShape(TRIANGLE_STRIP);
+    beginShape(QUAD_STRIP);
     for (let i = 0; i <= numPoints; i++) {
       let px = this.x + cos(radians(angle)) * this.outsideRadius;
       let py = this.y + sin(radians(angle)) * this.outsideRadius;
