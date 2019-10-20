@@ -22,7 +22,7 @@ class Donut {
   display() {  
     let numPoints = 50;
     let angle = 0;
-    let angleStep = 360.0 / numPoints;
+    let angleStep = random(360) / numPoints;
     
     beginShape(QUAD_STRIP);
     for (let i = 0; i <= numPoints; i++) {
